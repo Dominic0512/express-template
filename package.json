@@ -1,0 +1,30 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "babel-node server.js",
+    "nodemon": "nodemon --exec babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dominic0512/express-template.git"
+  },
+  "author": "Dominic Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dominic0512/express-template/issues"
+  },
+  "homepage": "https://github.com/Dominic0512/express-template",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0"
+  }
+}

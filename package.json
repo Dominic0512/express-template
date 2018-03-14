@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/Dominic0512/express-template",
   "dependencies": {
-    "express": "^4.16.2"
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "joi": "^13.1.2",
+    "mongoose": "^5.0.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

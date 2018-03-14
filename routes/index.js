@@ -1,11 +1,14 @@
 import { Router } from 'express';
-import api from './api';
+import userRoute from './userRoute';
 
 let root = Router();
+let api = Router();
 
 root.get('/', (req, res) => {
 	res.json('root');
 });
+
+api.use('/users', userRoute);
 
 root.use('/api', api);
 

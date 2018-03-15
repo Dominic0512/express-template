@@ -1,25 +1,65 @@
 import User from '../models/User';
+import userRepository from '../repositories/userRepository';
 
 const controller = {
-    list: (req, res, next) => {
-        const { limit = 50, skip = 0 } = req.query;
+    list: [
+        (req, res, next) => {
+            console.log('use validator');
+            next();
+        },
+        async (req, res, next) => {
+            const query = req.query,
+                data = {
+                    skip: query.skip,
+                    limit: query.limit
+                };
 
-        User.list({ limit, skip })
-           .then(users => res.json(users))
-           .catch(e => next(e));
-    },
-    create: (req, res, next) => {
-        User.create({
-            username: 'test',
-            mobileNumber: '0912345678',
-            createAt: new Date()
-        }, (err, user) => {
-            if(err) {
-                res.json(err);
+            try {
+                let users = await userRepository.list(data);
+
+                return res.json({
+                    status: 'successed',
+                    content: {
+                        users: users
+                    }
+                });
+            } catch(e) {
+                return res.json({
+                    status: 'failed',
+                    error: `error: ${e}`
+                });
             }
-            res.json(user);
-        });
-    },
+        }
+    ],
+    create: [
+        (req, res, next) => {
+            console.log('use validator');
+            next();
+        },
+        async (req, res, next) => {
+            const body = req.body,
+                data = {
+                    email: body.email,
+                    password: body.password,
+                    createAt: new Date()
+                };
+
+            try {
+                let user = await userRepository.create(data);
+                return res.json({
+                    status: 'successed',
+                    content: {
+                        user: user
+                    }
+                });
+            } catch(e) {
+                return res.json({
+                    status: 'failed',
+                    error: `error: ${e}`
+                });
+            }
+        }
+    ],
     show: (req, res, next) => {
         res.json('show');
     },

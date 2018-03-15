@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
     required: true
   },
-  mobileNumber: {
+  password: {
     type: String,
     required: true
   },
@@ -38,16 +38,8 @@ UserSchema.statics = {
    * @param {ObjectId} id - The objectId of user.
    * @returns {Promise<User, APIError>}
    */
-  get(id) {
-    return this.findById(id)
-      .exec()
-      .then((err, user) => {
-        if (err) {
-          return err;
-        }
-
-        return user;
-      });
+  async get(id) {
+    return await this.findById(id).exec();
   },
 
   /**
@@ -56,8 +48,8 @@ UserSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ skip = 0, limit = 50 } = {}) {
-    return this.find()
+  async list({ skip = 0, limit = 50 } = {}) {
+    return await this.find()
       .sort({ createdAt: -1 })
       .skip(+skip)
       .limit(+limit)

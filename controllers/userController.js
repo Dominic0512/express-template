@@ -19,10 +19,10 @@ const controller = {
                     users: users
                 }
             });
-        } catch(e) {
+        } catch(error) {
             return res.json({
                 status: 'failed',
-                error: `error: ${e}`
+                error: `error: ${error}`
             });
         }
     },
@@ -55,10 +55,10 @@ const controller = {
                     user: user
                 }
             });
-        } catch(e) {
+        } catch(error) {
             return res.json({
                 status: 'failed',
-                error: `error: ${e}`
+                error: `error: ${error}`
             });
         }
     },
@@ -73,10 +73,10 @@ const controller = {
                     user: user
                 }
             });
-        } catch(e) {
+        } catch(error) {
             return res.json({
                 status: 'failed',
-                error: `error: ${e}`
+                error: `error: ${error}`
             });
         }
     },
@@ -110,10 +110,10 @@ const controller = {
                     user: user
                 }
             });
-        } catch(e) {
+        } catch(error) {
             return res.json({
                 status: 'failed',
-                error: `error: ${e}`
+                error: `error: ${error}`
             });
         }
     },
@@ -128,10 +128,10 @@ const controller = {
                     user: user
                 }
             });
-        } catch(e) {
+        } catch(error) {
             return res.json({
                 status: 'failed',
-                error: `error: ${e}`
+                error: `error: ${error}`
             });
         }
     }

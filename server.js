@@ -19,11 +19,11 @@ mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });
 
-//-- support json encoded body
-app.use(bodyParser.json());
-
 //-- support encoded body
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//-- support json encoded body
+app.use(bodyParser.json());
 
 // secure apps by setting various HTTP headers
 app.use(helmet());

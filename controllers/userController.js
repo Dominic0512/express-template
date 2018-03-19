@@ -27,11 +27,12 @@ const controller = {
         }
     },
     create: async (req, res, next) => {
-        const body = req.body,
-            data = {
-                email: body.email,
-                password: body.password,
-            };
+        const body = req.body;
+
+        const data = {
+            email: body.email,
+            password: body.password,
+        };
 
         const rule = Joi.object().keys({
             email: Joi.string().required(),
@@ -121,12 +122,10 @@ const controller = {
         const { id } = req.params;
 
         try {
-            let user = await userRepository.softDelete({ _id: id });
+            let user = await userRepository.delete({ _id: id });
             return res.json({
                 status: 'successed',
-                content: {
-                    user: user
-                }
+                content: {}
             });
         } catch(error) {
             return res.json({

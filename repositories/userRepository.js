@@ -15,10 +15,10 @@ const repository = {
         return await User.create(data);
     },
     update: async (id, data) => {
-        return await User.findOneAndUpdate({ _id, id }, { $set: data }, { new: true });
-    }
-    softDelete: async (id) => {
-        return await User.findOneAndUpdate({ _id, id }, { $set: { isDeleted: true }}, { new: true });
+        return await User.findOneAndUpdate({ _id: id }, { $set: data }, { new: true });
+    },
+    delete: async (id) => {
+        return await User.remove({ _id: id });
     }
 };
 

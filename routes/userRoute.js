@@ -11,6 +11,6 @@ router.route('/')
 router.route('/:id')
     .get(userController.show)
     .put(userController.update)
-    .delete(authMiddleware.isLogin, userController.delete);
+    .delete(userController.delete);
 
 export default router;

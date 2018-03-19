@@ -1,0 +1,5 @@
+--require babel-polyfill
+--compilers js:babel-core/register
+--colors
+--ui bdd
+--recursive

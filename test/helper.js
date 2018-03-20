@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import sinon from 'sinon';
 import chai from 'chai';
-import supertest from 'supertest-as-promised';
+import supertest from 'supertest';
 import app from '../server';
 
 global.sinon = sinon;

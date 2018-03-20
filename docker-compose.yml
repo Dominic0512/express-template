@@ -1,0 +1,24 @@
+version: '2'
+services:
+    app:
+        build: .
+        volumes:
+            - .:/app
+            - /app/node_modules
+        ports:
+            - "8080:8080"
+        env_file:
+            - .env
+        working_dir: /app
+        tty: true
+        environment:
+          - MONGO_HOST=mongo
+          - MONGO_DB=development
+        links:
+            - mongo
+        depends_on:
+            - mongo
+    mongo:
+        image: "mongo:3.6"
+        ports:
+            - "27017:27017"

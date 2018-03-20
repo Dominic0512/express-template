@@ -25,16 +25,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //-- support json encoded body
 app.use(bodyParser.json());
 
-// secure apps by setting various HTTP headers
+//-- secure apps by setting various HTTP headers
 app.use(helmet());
 
-// enable CORS - Cross Origin Resource Sharing
+//-- enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
 app.use('/', root);
 
-app.server.listen(env.port, () => {
-	console.log('Started on port 3000');
-});
+//-- module.parent check is required to support mocha watch
+if (!module.parent) {
+    app.server.listen(env.port, () => {
+	    console.log('Started on port 8080');
+    });
+}
 
 export default app;

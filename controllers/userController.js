@@ -30,11 +30,13 @@ const controller = {
         const body = req.body;
 
         const data = {
+            name: body.name,
             email: body.email,
             password: body.password,
         };
 
         const rule = Joi.object().keys({
+            name: Joi.string().required(),
             email: Joi.string().required(),
             password: Joi.string().required().min(6)
         });
@@ -85,13 +87,15 @@ const controller = {
         const { id } = req.params;
         const body = req.body;
         const data = {
+            name: body.name,
             email: body.email,
             password: body.password,
         };
 
         const rule = Joi.object().keys({
-            email: Joi.string().required(),
-            password: Joi.string().required().min(6)
+            name: Joi.string(),
+            email: Joi.string(),
+            password: Joi.string().min(6)
         });
 
         const { error } = Joi.validate(data, rule);
